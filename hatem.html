@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blade's Cybersecurity Blog</title>
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.pinimg.com/originals/e2/3c/67/e23c67c1c2858dfaebe0a6383fd1d699.gif" type="image/gif">
+    <style>
+        /* Apply 8-bit Font */
+        * {
+            font-family: 'Press Start 2P', monospace;
+        }
+
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Preloader Styles */
+        body {
+            background-color: #000;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+            line-height: 1.6; /* Increased line-height for better text spacing */
+            letter-spacing: 0.5px; /* Slight letter-spacing for better readability */
+            padding-bottom: 50px; /* Ensure space for sticky footer */
+        }
+
+        #preloader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #preloader h1 {
+            color: white;
+            font-size: 24px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Main Page Styles */
+        body.main {
+            overflow-y: auto;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .main-gif {
+            width: 300px;
+            margin: 30px auto;
+            display: block;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        /* Section Links */
+        .section-link {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #000;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+            display: block;
+        }
+
+        .section-link:hover {
+            background-color: #111;
+        }
+
+        /* Section Content (No Box) */
+        .section-content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: transparent; /* No background */
+            border: none; /* No border */
+            display: none; /* Hidden by default */
+            position: relative;
+        }
+
+        .section-content h2 {
+            font-size: 24px;
+        }
+
+        .close-section {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #fff;
+            background-color: #000;
+            border: 1px solid #fff;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .close-section:hover {
+            background-color: #555;
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            display: none; /* Hidden until after preloader */
+        }
+
+        button {
+            background: #000;
+            color: #fff;
+			border: 2px solid #fff;
+            padding: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 12px;
+        }
+
+        button:hover {
+            background: #555;
+            color: #000;
+            border-color: #000;
+        }
+
+        /* Social Links at the bottom (sticky to the bottom) */
+        .social-links {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 999; /* Ensure it's above the content */
+        }
+
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <h1>Loading...</h1>
+    </div>
+
+    <!-- Music Player Button -->
+    <div class="music-player" id="music-player">
+        <audio id="bg-music" loop>
+            <source src="d.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <button onclick="toggleMusic()">Play/Pause</button>
+    </div>
+
+    <!-- Main Content -->
+    <header id="content">
+        <h1>Blade's Cybersecurity Blog</h1>
+        <img src="https://i.pinimg.com/originals/e2/3c/67/e23c67c1c2858dfaebe0a6383fd1d699.gif" alt="Main GIF" class="main-gif">
+    </header>
+
+    <!-- Section Links -->
+    <a href="#about" class="section-link">About Me</a>
+    <a href="#projects" class="section-link">Projects</a>
+    <a href="#ctf-writeups" class="section-link">CTF Writeups</a>
+
+    <!-- Section Content -->
+    <div id="about" class="section-content">
+        <span class="close-section" onclick="resetSection('about')">X</span>
+        <h2>About Me</h2>
+        <p>My name is Hatem, also known as Blade. I'm a third-year networking student passionate about cybersecurity, focusing on digital forensics and OSINT. I compete in CTFs with my team Phr34k$. I've also been an author in various CTFs and have worked on projects related to cloud computing, DevOps, and IoT.</p>
+    </div>
+
+    <div id="projects" class="section-content">
+        <span class="close-section" onclick="resetSection('projects')">X</span>
+        <h2>Projects</h2>
+        <p>Here, I'll share my cybersecurity projects, tools I've developed, and unique scripts related to OSINT and digital forensics.</p>
+    </div>
+
+    <div id="ctf-writeups" class="section-content">
+        <span class="close-section" onclick="resetSection('ctf-writeups')">X</span>
+        <h2>CTF Writeups</h2>
+        <p>Dive into my Capture The Flag (CTF) write-ups, where I break down my approaches to challenges and the techniques I've used to solve them. This section will be a growing library of problem-solving methods for various CTF competitions.</p>
+    </div>
+
+
+    <!-- Social Links -->
+    <div class="social-links">
+        <a href="mailto:hatembhh10@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/hatem-ben-hadj-hassen-a12776245/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://phreaks.xyz" target="_blank" title="Phr34k$"><i class="fas fa-globe"></i></a>
+        <a href="https://github.com/low-iq" target="_blank" title="GitHub"><i class="fab fa-github"></i></a> <!-- Added GitHub link -->
+    </div>
+
+    <script>
+        // Wait for window load to hide preloader and show content
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById("preloader").style.display = "none";
+                document.getElementById("content").style.display = "block";
+                document.getElementById("music-player").style.display = "block"; // Show music player after preloader
+                document.body.classList.add("main"); // Enable scrolling
+            }, 3000); // Preloader delay of 3 seconds
+        });
+
+        // Toggle section visibility on click
+        document.querySelectorAll('.section-link').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                document.querySelectorAll('.section-content').forEach(section => section.style.display = 'none');
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.style.display = 'block';
+            });
+        });
+
+        // Reset section content when clicking "X"
+        function resetSection(sectionId) {
+            document.getElementById(sectionId).style.display = 'none';
+        }
+
+        // Music play/pause function
+        const bgMusic = document.getElementById("bg-music");
+        function toggleMusic() {
+            if (bgMusic.paused) {
+                bgMusic.play();
+            } else {
+                bgMusic.pause();
+            }
+        }
+    </script>
+</body>
+</html>
